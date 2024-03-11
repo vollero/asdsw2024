@@ -16,7 +16,7 @@ conn, addr = TCPServerSocket.accept()
 
 print('Client: {}'.format(addr))
 
-time.sleep(20)
+time.sleep(1)
 while True:
     data = conn.recv(1024)
 
