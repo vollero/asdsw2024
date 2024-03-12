@@ -13,6 +13,15 @@ def sendToAll(addr, data):
             econn.sendall(data)
     mutex.release()
 
+def sendToUser(daddr, data):
+    global activeConnections
+    global mutex
+
+    mutex.acquire()
+    conn = activeConnections[daddr]:
+    conn.sendall(data)
+    mutex.release()
+
 def connection_manager_thread(addr, conn):
     global activeConnections
     global mutex
@@ -23,6 +32,11 @@ def connection_manager_thread(addr, conn):
             break
         if bool(re.search('^\[STOP\]', data.decode('utf-8'))):
             break
+        if bool(re.search('^\[DM\]', data.decode('utf-8'))):
+            print('immettere logica di invio messaggio privato')
+            # logica di riconoscimento {'addr': '127.0.0.1', 'port': '44444', 'msg': 'messaggio'}
+            # sendToUser(daddr, msg)
+            # continue
         print('{}: chat message: {}'.format(addr, data[:-1].decode('utf-8')))
         
         dataToSend = '{}: {}'.format(addr, data.decode('utf-8'))
@@ -62,5 +76,5 @@ if __name__ == '__main__':
             Thread(target=connection_manager_thread, args=(addr, conn),).start()
 
     finally:
-        if TCPSeverSocket:
+        if TCPServerSocket:
             TCPServerSocket.close()
