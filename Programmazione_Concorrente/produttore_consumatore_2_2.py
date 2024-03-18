@@ -71,19 +71,23 @@ if __name__ == "__main__":
     
     produttore1 = Thread(target=thread_produttore,  args=('Produttore1', argv[1],))
     produttore2 = Thread(target=thread_produttore,  args=('Produttore2', argv[2],))
-    consumatore = Thread(target=thread_consumatore, args=('Consumatore',))
+    consumatore1 = Thread(target=thread_consumatore, args=('Consumatore1',))
     
+    consumatore2 = Thread(target=thread_consumatore, args=('Consumatore2',))
+
     logging.info("Main       :  before running threads")
 
     produttore1.start()
     produttore2.start()
     time.sleep(0.1)
-    consumatore.start()
+    consumatore1.start()
+    consumatore2.start()
     
     logging.info("Main       :  wait for the threads to finish")
 
     produttore1.join()
     produttore2.join()
-    consumatore.join()
+    consumatore1.join()
+    consumatore2.join()
 
     logging.info("Main       :  all done")

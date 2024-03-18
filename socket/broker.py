@@ -209,5 +209,5 @@ if __name__ == '__main__':
             
             Thread(target=connection_manager_thread, args=(curr_id, conn),).start()  #
     finally:
-        if TCPSeverSocket:
+        if TCPServerSocket:
             TCPServerSocket.close()

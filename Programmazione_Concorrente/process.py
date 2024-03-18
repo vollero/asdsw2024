@@ -10,13 +10,13 @@ def sleeper(name):
     global value
     t = gmtime()
     s = randint(4,20)
+    value = s
     txt = str(t.tm_min) + ':' + str(t.tm_sec) + ' ' + name + ' is going to sleep for ' + str(s) + ' seconds ' 
     #+ str(value) 
     print(txt)
     sleep(s)
     t = gmtime()
-    txt = str(t.tm_min) + ':' + str(t.tm_sec) + ' ' + name + ' has woken up ' 
-    #+ str(value)
+    txt = str(t.tm_min) + ':' + str(t.tm_sec) + ' ' + name + ' has woken up ' + str(value)
     print(txt)
 
 if __name__ == '__main__':

@@ -30,6 +30,9 @@ def process1():
             except:
                 pass
 
+        if (i % 6) == 0:
+            time.sleep(5)
+
     # Clean up fifo
     file.close()
 

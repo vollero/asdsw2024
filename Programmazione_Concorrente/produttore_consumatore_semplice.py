@@ -21,6 +21,7 @@ def thread_produttore(nome, nomefile):
         while row:
             mutex.acquire()
             sharedBuffer.append(row[:-1])
+            logging.info("{} ha letto dalla memoria condivisa la riga [{}]". format(nome, row[:-1]))
             mutex.release()
             time.sleep(randrange(2))
             row = f.readline()

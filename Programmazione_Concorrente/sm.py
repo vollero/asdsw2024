@@ -62,7 +62,7 @@ def main():
 
     # Setup shared memory using Array (multiprocessing)
     arr = Array('i', [-1] * 10)
-    arr2 = Array('i', [-1] * 10)
+    #arr2 = Array('i', [-1] * 10)
 
     # Setup processes
     procs = [Process(target=process1, args=(arr,)), Process(target=process2, args=(arr,))]

@@ -37,6 +37,7 @@ def thread_produttore(nome, nomefile):
         row = f.readline()
         while row:
             safeWrite(row[:-1])
+            logging.info("{} ha letto dalla memoria condivisa la riga [{}]". format(nome, row[:-1])) 
             time.sleep(randrange(2))
             row = f.readline()
 
