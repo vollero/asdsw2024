@@ -34,6 +34,13 @@ def decodeMessage(addr, mess):
         command = result.group(1)
         logging.debug('COMMAND: {}'.format(command))
 
+        '''
+        if command == 'JOIN':
+            decodeJoin(addr, mess)
+        else if command == 'LEAVE':
+            decodeLEAVE(addr, mess)
+        '''
+
         try:
             action = {
                 'JOIN'  : lambda param1,param2 : decodeJoin(param1, param2),
