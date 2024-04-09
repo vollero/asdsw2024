@@ -15,7 +15,7 @@ def add(op1, op2):
     output['op1'] = op1
     output['op2'] = op2
     output['res'] = result
-    return '{}'.format(json.dumps(output))
+    return '{}\n'.format(json.dumps(output))
 
 @app.route('/calculator/diff/<op1>/<op2>')
 def diff(op1, op2):
@@ -24,7 +24,7 @@ def diff(op1, op2):
     output['op1'] = op1
     output['op2'] = op2
     output['res'] = result
-    return '{}'.format(json.dumps(output))
+    return '{}\n'.format(json.dumps(output))
 
 @app.route('/calculator/div/<op1>/<op2>')
 def div(op1, op2):
@@ -35,7 +35,7 @@ def div(op1, op2):
     output['op2'] = op2
     output['res'] = result1
     output['mod'] = result2
-    return '{}'.format(json.dumps(output))
+    return '{}\n'.format(json.dumps(output))
 
 @app.route('/calculator/mul/<op1>/<op2>')
 def mul(op1, op2):
@@ -44,9 +44,9 @@ def mul(op1, op2):
     output['op1'] = op1
     output['op2'] = op2
     output['res'] = result
-    return '{}'.format(json.dumps(output))
+    return '{}\n'.format(json.dumps(output))
 
-@app.route('/machine_learning/modello1/<parametro1>/<parametro2>/<parametro3>')
+@app.route('/machine_learning/modello/<parametro1>/<parametro2>/<parametro3>')
 def modell1(parametro1, parametro2, parametro3):
     result = modello_perfetto(parametro1, parametro2, parametro3)
     return '{}'.format(json.dumps(output))
