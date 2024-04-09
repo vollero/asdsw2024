@@ -48,7 +48,7 @@ def mul(op1, op2):
 
 @app.route('/machine_learning/modello1/<parametro1>/<parametro2>/<parametro3>')
 def modell1(parametro1, parametro2, parametro3):
-    result = modello1_perfetto(parametro1, parametro2, parametro3)
+    result = modello_perfetto(parametro1, parametro2, parametro3)
     return '{}'.format(json.dumps(output))
 
 def modello_perfetto(p1, p2, p3):
