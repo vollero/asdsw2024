@@ -36,7 +36,8 @@ def redirect_short_url(short_url):
     db = get_db()
     url_data = db.execute('SELECT long_url FROM urls WHERE short_url = ?', (short_url,)).fetchone()
     if url_data:
-        return redirect(url_data['long_url'])
+        return redirect(url_data['long_url']) #default 302
+        #return redirect(url_data['long_url'], 301)
     return 'URL not found', 404
 
 if __name__ == '__main__':
