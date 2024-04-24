@@ -4,7 +4,6 @@ import hashlib
 
 app = Flask(__name__)
 
-# Database setup
 def init_db():
     with app.app_context():
         db = get_db()
@@ -40,7 +39,5 @@ def redirect_short_url(short_url):
         #return redirect(url_data['long_url'], 301)
     return 'URL not found', 404
 
-if __name__ == '__main__':
-    init_db()
-    app.run(debug=True)
-
+init_db()
+app.run(debug=True)
