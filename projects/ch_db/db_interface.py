@@ -32,6 +32,14 @@ def get(key):
     except requests.exceptions.RequestException:
         return jsonify({'error': 'Backend server error', 'server': server_url}), 500
 
+
+@app.route('/put', methods=['POST'])
+def put():
+    d = request.json
+    print(d)
+    r = requests.post(get_server() + 'put/', data = d)
+    return r.json
+
 if __name__ == '__main__':
     app.run(debug=True)
 
