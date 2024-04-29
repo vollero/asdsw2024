@@ -57,4 +57,3 @@ def generate_hash_id():
 
 init_db()
 app.run(debug=True)
-

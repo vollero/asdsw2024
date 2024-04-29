@@ -27,13 +27,15 @@ def shorten_url():
     db = get_db()
     db.execute('INSERT INTO urls (short_url, long_url) VALUES (?, ?)', (url_hash, long_url))
     db.commit()
-    return jsonify({'short_url': f'http://localhost:5000/{url_hash}'})
+    db.close()
+    return jsonify({'short_url': f'http://localhost:6000/{url_hash}'})
 
 # Redirect from a short URL
 @app.route('/<short_url>')
 def redirect_short_url(short_url):
     db = get_db()
     url_data = db.execute('SELECT long_url FROM urls WHERE short_url = ?', (short_url,)).fetchone()
+    db.close()
     if url_data:
         return redirect(url_data['long_url']) #default 302
         #return redirect(url_data['long_url'], 301)
