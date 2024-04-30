@@ -14,7 +14,18 @@ def hash_function(key):
     return int(hashlib.md5(key.encode()).hexdigest(), 16)
 
 def get_server(key):
-    server_hashes = {hash_function(server): server for server in servers}
+    server_hashes1 = {hash_function(server+'1'): server for server in servers}
+    server_hashes2 = {hash_function(server+'2'): server for server in servers}
+   
+    server_hashes = dict()
+
+    for key_, server in server_hashes1.items():
+        server_hashes[key_] = server
+    for key_, server in server_hashes2.items():
+        server_hashes[key_] = server
+
+    print(server_hashes)
+
     sorted_hashes = sorted(server_hashes.keys())
     
     key_hash = hash_function(key)
@@ -28,8 +39,6 @@ def get_server(key):
 @app.route('/get/<int:key>', methods=['GET'])
 def get(key):
     server_url = get_server(str(key)) + 'get/' + str(key)
-
-    return server_url
 
     try:
         response = requests.get(server_url)
@@ -48,7 +57,7 @@ def put():
     d = request.json
     key = d["key"]
     h = {'Content-Type': 'application/json'};
-    r = requests.post(get_server(int(key)) + 'put', json=d, headers=h)
+    r = requests.post(get_server(str(key)) + 'put', json=d, headers=h)
     return d
 
 if __name__ == '__main__':
