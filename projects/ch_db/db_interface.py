@@ -14,16 +14,10 @@ def hash_function(key):
     return int(hashlib.md5(key.encode()).hexdigest(), 16)
 
 def get_server(key):
-    server_hashes1 = {hash_function(server+'1'): server for server in servers}
-    server_hashes2 = {hash_function(server+'2'): server for server in servers}
+    server_hashes = {hash_function(server+'1'): server for server in servers}
+    for i in range(2,10):
+        server_hashes.update({hash_function(server+str(i)): server for server in servers})
    
-    server_hashes = dict()
-
-    for key_, server in server_hashes1.items():
-        server_hashes[key_] = server
-    for key_, server in server_hashes2.items():
-        server_hashes[key_] = server
-
     print(server_hashes)
 
     sorted_hashes = sorted(server_hashes.keys())
