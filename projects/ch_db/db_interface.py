@@ -18,8 +18,6 @@ def get_server(key):
     for i in range(2,10):
         server_hashes.update({hash_function(server+str(i)): server for server in servers})
    
-    print(server_hashes)
-
     sorted_hashes = sorted(server_hashes.keys())
     
     key_hash = hash_function(key)
