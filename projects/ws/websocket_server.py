@@ -5,7 +5,6 @@ connected_clients = set()
 
 async def chat_server(websocket, path):
     connected_clients.add(websocket)
-    print(websocket)
     try:
         async for message in websocket:
             await asyncio.wait([client.send(message) for client in connected_clients])
