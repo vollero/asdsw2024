@@ -3,7 +3,7 @@ import websockets
 import uuid
 import random
 
-BOARD_SIZE = 8
+BOARD_SIZE = 16
 
 connected_clients = {}
 
