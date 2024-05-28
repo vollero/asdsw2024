@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 
 # Load environment variables
 load_dotenv()
-BOT_TOKEN = '7191173703:AAHWJ2hXTdwfVdQUM7JvWQuoMcPFddC06Dw'
+BOT_TOKEN = ''
 #os.getenv('BOT_TOKEN')
 
 # Enable logging
