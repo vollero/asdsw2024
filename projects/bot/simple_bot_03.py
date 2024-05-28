@@ -29,7 +29,7 @@ def settimer(update: Update, context: CallbackContext) -> None:
 
 def main():
     # Replace 'YOUR_TELEGRAM_BOT_TOKEN' with your bot's token
-    bot_token = '7191173703:AAHWJ2hXTdwfVdQUM7JvWQuoMcPFddC06Dw'
+    bot_token = ''
     updater = Updater(bot_token, use_context=True)
 
     dp = updater.dispatcher
