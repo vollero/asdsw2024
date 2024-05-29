@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+  object_storage_1:
+    build:
+      context: .
+      dockerfile: Dockerfile.os
+    container_name: object_storage_1
+    ports:
+      - "5001:5000"
+
+  object_storage_2:
+    build:
+      context: .
+      dockerfile: Dockerfile.os
+    container_name: object_storage_2
+    ports:
+      - "5002:5000"
+
+  object_storage_3:
+    build:
+      context: .
+      dockerfile: Dockerfile.os
+    container_name: object_storage_3
+    ports:
+      - "5003:5000"
+
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile.nginx
+    container_name: nginx_load_balancer
+    ports:
+      - "80:80"
+    depends_on:
+      - object_storage_1
+      - object_storage_2
+      - object_storage_3
+

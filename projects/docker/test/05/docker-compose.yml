@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  object_storage:
+    build:
+      context: .
+      dockerfile: Dockerfile.os
+    expose:
+      - "5000"
+    environment:
+      - FLASK_ENV=development
+    networks:
+      - app-network
+
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile.nginx
+    container_name: nginx_load_balancer
+    ports:
+      - "80:80"
+    depends_on:
+      - object_storage
+    networks:
+      - app-network
+
+networks:
+  app-network:
+
